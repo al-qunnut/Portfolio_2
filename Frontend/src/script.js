@@ -1,6 +1,41 @@
+import './Styles/homepage_styles.css';
 import News from './Images/News.png';
 import Pericare from './Images/Pericare.png';
 import Carserra from './Images/Carserra.png';
+import Dashboard from './Images/Dashboard.png';
+import Dashboard2 from './Images/Dashboard2.png';
+import Dashboard3 from './Images/Dashboard3.png';
+import SignUp from './Images/SignUp.png';
+
+
+export const navListMenu = () => {
+  return navLists.map(navList => (
+    `<li>
+      <a href="${navList.href}">
+        ${navList.name}
+      </a>
+    </li>`
+  )).join('');
+};
+export const contactIcons = () => {
+  return (
+ `<a href="https://wa.me/+2347065667063" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <a href="tel:+2347065667063">
+   <i class="fa-solid fa-phone"></i>
+  </a>
+  <a href='www.linkedin.com/in/al-qunnut-oshodilawal' target="_blank" rel="noopener">
+   <i class="fa-brands fa-linkedin"></i>
+  </a>
+  <a href='https://github.com/al-qunnut' target="_blank" rel="noopener">
+    <i class="fa-brands fa-square-github"></i> 
+  </a>
+  <a href='mailto:oshodilawalalqunnut@gmail.com'>
+    <i class="fa-solid fa-envelope"></i>
+  </a>`
+  )
+};
 
 
 export const navLists = [
@@ -11,7 +46,7 @@ export const navLists = [
   },
   {
     id: 2,
-    href: "#",
+    href: "../src/Pages/Projects.js",
     name: 'Projects'
   },
   {
@@ -25,6 +60,25 @@ export const navLists = [
     name: 'Blog'
   }
 ]
+
+export const designs = [
+  {
+    id: 1,
+    href: Dashboard2,
+  },
+  {
+    id: 2,
+    href: Dashboard3,
+  },
+  {
+    id: 3,
+    href: Dashboard,
+  },
+  {
+    id: 4,
+    href: SignUp,
+  }
+  ]
 export const Projects =[
   {
      id: 1,
@@ -49,3 +103,6 @@ export const Projects =[
   },
  
 ]
+
+
+

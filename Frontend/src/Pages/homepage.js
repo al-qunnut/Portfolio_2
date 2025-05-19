@@ -1,23 +1,19 @@
 import '../Styles/homepage_styles.css';
-import { navLists } from '../script';
-import { Projects } from '../script';
-import logo from '../Images/Al-Qunnut.png';
+import Navigation from './Navigation.js';
+import Footer from './Footer.js';
+import { designs, Projects } from '../script';
 import anime from '../Images/anime.png';
-import Dashboard from '../Images/Dashboard.png'
-import Dashboard2 from '../Images/Dashboard2.png'
-import Dashboard3 from '../Images/Dashboard3.png'
-import SignUp from '../Images/SignUp.png'
+import MyImage from '../Images/MyImage.png';
+import logo from '../Images/Al-Qunnut.png'; // You forgot to import this here
 
-const navListMenu = () => {
-  return navLists.map(navList => (
-    `<li>
-      <a href="${navList.href}">
-        ${navList.name}
-      </a>
-    </li>`
+// Generate Design Components
+const designsComp = () => {
+  return designs.map(design => (
+    `<img src="${design.href}" class='design_images'/>`
   )).join('');
 };
 
+// Generate Project Cards
 const ProjectList = () => {
   return Projects.map(project => (
     `<div class='card'>
@@ -34,86 +30,88 @@ const ProjectList = () => {
 };
 
 function loadHomePage() {
+  // Inject the full HTML
   document.querySelector('#homepage').innerHTML = `
-    <div>
+    <div class='home'>
+      
       <!-- Navigation -->
-      <div class='home'>
-        <nav>
-          <div class='mobile'>
-            <div class="logo">
-              <img src="${logo}" alt="Logo" />
-            </div>
-            <div class="mobile-nav">
-              <button id="menu-toggle">☰</button>
-            </div>
-          </div>
-          <ul id="nav-menu" class="hidden">
-            ${navListMenu()} 
-            <div>
-              <button class='contactbtn'>Contact Me</button>
-            </div>
-          </ul>
-        </nav>
+      <div id='nav'>
+        ${Navigation()}
+      </div>
 
-        <!-- Home -->
-        <div class='Home-content'>
-          <div class='Home-text'>
-            <h3>Hello! I'm <img src="${logo}" alt="Logo" /></h3>
-            <h1>I'm a <span class='auto-type'></span></h1>
-            <p>Turning code into creations and clicks into connections - tech meets strategy!</p>
-          </div>
-          <div class='Home-image'>
-            <img src="${anime}" alt="anime" class='Home-img'/>
-          </div>
+      <!-- Home Section -->
+      <div class='Home-content'>
+        <div class='Home-text'>
+          <h3>Hello! I'm <img src="${logo}" alt="Logo" /></h3>
+          <h1>I'm a <span class='auto-type'></span></h1>
+          <p>Turning code into creations and clicks into connections - tech meets strategy!</p>
         </div>
+        <div class='Home-image'>
+          <img src="${anime}" alt="anime" class='Home-img'/>
+        </div>
+      </div>
 
-        <!-- Projects -->
+      <!-- About Section -->
+      <div class='About'>
+        <div class='About_image'>
+          <img src='${MyImage}' alt='my image' class='About_img'/>
+        </div>
+        <div class='About_content'>
+          <h3>About Me</h3>
+          <p>Hi, I'm a web developer and digital marketer with love for technology. I enjoy creating websites that are fast, clean, and easy to use—and I'm always exploring better ways to help people and businesses grow online. I'm a tech enthusiast at heart, always curious, always learning. Whether it's building something from scratch or digging into analytics to see what's working, I like finding smart ways to make things better.</p>
+          <p>If it's digital, I'm probably into it.</p>
+          <button>See more about me...</button>
+        </div>
+      </div>
+
+      <!-- Projects Section -->
+      <div class='Projects'>
+        <h2>Personal Web Projects</h2>
+        <div class='projectCards'>
+          ${ProjectList()} 
+        </div>
+      </div>
+
+      <!-- Designs Section -->
+      <div>
+        <h2>Check out my designs...</h2>
+        <div class='designs'>
+          ${designsComp()}
+        </div>
+      </div>
+
+      <!-- Digital Projects Counter Section -->
+      <div class='DigitalProjects'>
         <div>
-          <div class='Projects'>
-            <h2>Personal Web Projects</h2>
-            <div class='projectCards'>
-              ${ProjectList()} 
-            </div>
-          </div>
-
-          <div class='DigitalProjects'>
-            <div>
-              <h2>Over <b id="counter"></b></h2>
-              <p>Marketing Campaigns</p>
-            </div>
-            <div>
-              <h2>Over <b id="counter2"></b></h2>
-              <p>Digital Marketing Content</p>
-            </div>
-          </div>
-            <div>
-              <h2>Check out my designs...</h2>
-              <img src='${Dashboard.png}' alt="design" />
-              <img src='${Dashboard2.png}' alt="design" />
-              <img src='${Dashboard3.png}' alt="design" />
-              <img src='${SignUp.png}' alt="design" />
-            </div>
-          </div>
+          <h2>Over <b id="counter"></b></h2>
+          <p>Marketing Campaigns</p>
         </div>
-
-        <!-- About -->
-        <div class='About'>
-          <div>
-            <!-- More content -->
-          </div>
+        <div>
+          <h2>Over <b id="counter2"></b></h2>
+          <p>Digital Marketing Content</p>
         </div>
+      </div>
+
+      <!-- More Works -->
+      <div class='moreWorks'>
+        <button>Check more of my works...</button>
+      </div>
+      
+
+      <div>
+         ${Footer()}
       </div>
     </div>
   `;
 
-  // Menu toggle
+  // Attach mobile menu toggle
   const toggleBtn = document.getElementById('menu-toggle');
   const navMenu = document.getElementById('nav-menu');
-  toggleBtn.addEventListener('click', () => {
+  toggleBtn?.addEventListener('click', () => {
     navMenu.classList.toggle('hidden');
   });
 
-  // Typed.js animation
+  // Typed.js Animation
   var typed = new Typed('.auto-type', {
     strings: ["WEB DEVELOPER", "DIGITAL MARKETER"],
     typeSpeed: 150,
@@ -121,32 +119,30 @@ function loadHomePage() {
     loop: true
   });
 
-  // ✅ Counter logic (must be inside here!)
+  // Counter 1
   let number = 0;
   const counterElement = document.getElementById('counter');
-
   const intervalId = setInterval(() => {
     counterElement.textContent = number;
     number++;
-
     if (number > 100) {
       clearInterval(intervalId);
       counterElement.textContent = "100+";
     }
   }, 100);
+
+  // Counter 2
   let number2 = 0;
   const counterElement2 = document.getElementById('counter2');
-
   const intervalId2 = setInterval(() => {
     counterElement2.textContent = number2;
     number2++;
-
     if (number2 > 250) {
-      clearInterval(intervalId);
+      clearInterval(intervalId2);
       counterElement2.textContent = "250+";
     }
   }, 100);
-  
 }
 
+// Run the homepage setup
 loadHomePage();
