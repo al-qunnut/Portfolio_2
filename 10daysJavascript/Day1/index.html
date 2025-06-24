@@ -83,21 +83,24 @@
     <div class="result" id="result">
        
     </div>
-    <span class="correctGuess" id="correctNo">See the number!</span>
+    <span class="correctGuess" id="correctNo">See the correct Guess!</span>
     </div>
   </div>
   <script>
-
+    //To guess a random number between 1 and 100
     const targetGuess =  Math.floor(Math.random() * 100) + 1;
 
+    //To target elements by their id
     const guessInput = document.getElementById("Guess");
     const submitBtn = document.getElementById("submitBtn");
     const result = document.getElementById("result");
     const correctNo = document.getElementById("correctNo")
      
+    //To make buttons work whrn clicked
     submitBtn.addEventListener("click", checkFunction);
     correctNo.addEventListener("click", checkTarget);
 
+    //Function to respond 
     function checkFunction () {
        const userGuess = guessInput.value;
 
@@ -110,12 +113,19 @@
        } else {
          result.textContent = `❌ Nope! ${userGuess} is not the number. Try again.`;
        }
-       guessInput.value = "";
+      
       }
     
-
+  
+      //function to display the right guess
       function checkTarget() {
-        result.textContent = `${targetGuess} is the correct number`;
+        const userGuess = guessInput.value;
+        if (userGuess) {
+          result.textContent = `${targetGuess} is the correct number`;
+        } else {
+          result.textContent = "⛔ You have not input a value yet"
+        }
+         guessInput.value = "";
       }
   
   </script>
