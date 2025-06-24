@@ -1,0 +1,47 @@
+Perfect—kicking things off with the **Number Guesser** is a great move! Here's a simple, beginner-friendly roadmap to structure your project from scratch, while still applying core JavaScript concepts like variables, functions, conditionals, and event handling.
+
+---
+
+### 🛠️ Number Guesser Game – Code Roadmap
+
+#### 1. **Set Up Your HTML Structure**
+Basic elements:
+- Input field for the user to type a number
+- Button to submit their guess
+- A section to display results or messages
+- (Optional) A reset button to play again
+
+#### 2. **Define Game Variables in JS**
+- Random number between 1 and 100 (use `Math.random()` and `Math.floor()`)
+- Number of attempts (if you want to limit guesses)
+- DOM references to update UI with messages and inputs
+
+#### 3. **Handle User Input**
+- Add an event listener to the "Submit" button
+- Read the value from the input field
+- Compare the guessed number with the target number
+
+#### 4. **Give Feedback to the Player**
+Use `if...else` to check:
+- Is it too high?
+- Too low?
+- Correct?
+
+Then, update the result/message element in the DOM with an appropriate message.
+
+#### 5. **End Game & Reset Option**
+- If the guess is correct or attempts run out, disable input
+- Show a “Play Again” or “Reset” button to start over
+- Reset the game state and UI when clicked
+
+---
+
+### 🧪 Concepts You’ll Practice
+- `Math.random()`
+- `querySelector` / `addEventListener`
+- Variables & conditionals
+- UI feedback with `textContent` or `innerHTML`
+- Functions to organize logic (e.g. `checkGuess()` and `resetGame()`)
+
+---
+

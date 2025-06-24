@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      * {
+        background-color: rgb(0, 0, 10);
+        color: white;
+      }
+
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      h1 {
+        font-size: 4rem;
+        font-weight: bolder;
+      }
+
+      label {
+        font-size: 2.5rem;
+        display: block;
+      }
+
+      input {
+        padding: 10px;
+        margin: 10px;
+        width: 50vw;
+        font-size: 2rem;
+        display: block;
+        margin: 0 auto;
+      }
+
+      button {
+        background-color: aqua;
+        color:rgb(0, 0, 10);
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 30px;
+        font-size: 2rem;
+      }
+
+      button:hover {
+        background-color: rgb(0, 104, 104);
+        color: white;
+      }
+
+      .result {
+        width: 250px;
+        height: 150px;
+        border-radius: 2px solid;
+        background-color: wheat;
+        margin: 10px auto;
+        padding: 20px;
+        color: black;
+        font-size: 2.5rem;
+        text-align: center;
+      }
+
+      .correctGuess {
+        font-size: 2.5rem;
+      }
+    </style>
+
+  <div class="content">
+    <div class="">
+    <h1>Guess any number <br/> between 1-100 </h1>
+    <label htmlFor="Guess">Guess a number:</label>
+    <input type="number" name="Guess" id="Guess" required />
+     
+    <button type="Submit" id="submitBtn">SUBMIT</button>
+
+    <div class="result" id="result">
+       
+    </div>
+    <span class="correctGuess" id="correctNo">See the number!</span>
+    </div>
+  </div>
+  <script>
+
+    const targetGuess =  Math.floor(Math.random() * 100) + 1;
+
+    const guessInput = document.getElementById("Guess");
+    const submitBtn = document.getElementById("submitBtn");
+    const result = document.getElementById("result");
+    const correctNo = document.getElementById("correctNo")
+     
+    submitBtn.addEventListener("click", checkFunction);
+    correctNo.addEventListener("click", checkTarget);
+
+    function checkFunction () {
+       const userGuess = guessInput.value;
+
+       if ( userGuess > 100 || userGuess < 1) {
+        result.textContent = "⛔ Enter a valid number between 1 and 100";
+        return;
+       } else if (userGuess === targetGuess){
+        result.textContent = ` 🎉 Congratulations! ${userGuess} is correct!`;
+        return;
+       } else {
+         result.textContent = `❌ Nope! ${userGuess} is not the number. Try again.`;
+       }
+       guessInput.value = "";
+      }
+    
+
+      function checkTarget() {
+        result.textContent = `${targetGuess} is the correct number`;
+      }
+  
+  </script>
+</body>
+</html>
