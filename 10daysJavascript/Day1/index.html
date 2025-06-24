@@ -113,7 +113,9 @@
        } else {
          result.textContent = `❌ Nope! ${userGuess} is not the number. Try again.`;
        }
-      
+       setTimeout(() => {
+           location.reload();
+         }, 5000);
       }
     
   
@@ -126,6 +128,10 @@
           result.textContent = "⛔ You have not input a value yet"
         }
          guessInput.value = "";
+         setTimeout(() => {
+           location.reload();
+         }, 5000);
+
       }
   
   </script>
