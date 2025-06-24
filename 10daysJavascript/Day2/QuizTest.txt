@@ -1,0 +1,14 @@
+
+Here’s a compact version of the **Quiz App roadmap**, focusing just on the steps you'd follow to build it:
+
+1. **Structure your HTML layout** with space for questions, choices, and buttons.
+2. **Define your questions** as an array of objects (with question text, choices, and answers).
+3. **Create a closure** to keep score private and track correct answers.
+4. **Build functions** to:
+   - Display the current question and choices.
+   - Handle choice selection and move to the next question.
+5. **Track progress** using a variable like `currentIndex`.
+6. **End the quiz** and show the final score when questions are exhausted.
+7. **Use ES6+ syntax** throughout (arrow functions, `let`/`const`, destructuring, etc.).
+
+You can fill in the code as you go—kind of like a recipe where you’re writing your own ingredients. If you'd like help planning the next day of your challenge, I’m totally up for it.

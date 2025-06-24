@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      * {
+        margin: 0;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      }
+      .Header {
+        background-color: rgb(0, 0, 128);
+        width: 100vw;
+        height: fit-content;
+        color: white;
+        padding: 80px;
+      }
+      h1{
+        font-size: 4rem;
+        font-weight: bolder;
+        text-align: center;
+      }
+
+      p{
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 60vh;
+        width: 100vw;
+      }
+
+      h2 {
+        font-size: 3rem;
+        text-align: center;
+        display: block;
+      }
+
+      .options {
+        display: block;
+        align-self: start;
+        font-size: 2rem;
+      }
+
+      .buttons{
+        display: flex;
+        justify-items: stretch;
+      }
+
+      button {
+        background-color: rgb(87, 241, 121);
+        color:rgb(0, 0, 10);
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 30px;
+        font-size: 2rem;
+      }
+
+      button:hover {
+        background-color: rgb(7, 88, 25);
+        color: white;
+      }
+
+    </style>
+
+    <div class="">
+       <div class="Header">
+        <h1>Quiz App Test</h1>
+        <p>Check your English accuracy with 5 verb argument questions!</p>
+       </div>
+
+       <div class="body">
+        <h2 id="question"></h2>
+
+        <div class="options">
+        <div class="">
+          <input type="radio" name="quiz" value="option1" id="option1" />
+          <label htmlFor="option1" id="label1"></label>
+        </div>
+        <div class="">
+          <input type="radio" name="quiz" value="option2" id="option2" />
+          <label htmlFor="option2" id="label2"></label>
+        </div>
+        <div class="">
+          <input type="radio" name="quiz" value="option3" id="option3" />
+          <label htmlFor="option3" id="label3"></label>
+        </div>
+        <div class="">
+          <input type="radio" name="quiz" value="option4" id="option4" />
+          <label htmlFor="option4" id="label4"></label>
+        </div>
+        </div>
+          <div class="buttons">
+            <button onclick="previous()">
+              Previous
+            </button>
+            <button onclick="next">
+              Next
+            </button>
+          </div>
+       </div>
+    </div>
+
+    <script>
+
+  const questionFunc = document.getElementById("question");
+  const options1 = document.getElementById("label1");
+  const options2 = document.getElementById("label2");
+  const options3 = document.getElementById("label3");
+  const options4 = document.getElementById("label4");
+
+  const questions = [
+    {no: 1, question: 'Which sentence is grammatically correct?'},
+    {no: 2, question: 'Choose the correct word to complete the sentence: "I have lived in Lagos _____ five years"'},
+    {no: 3, question: 'What is the synonym of the word “generous”?'},
+    {no: 4, question: 'Which sentence uses the correct form of the verb?'},
+    {no: 5, question: 'What part of speech is the word “quickly” in the sentence: “She ran quickly to catch the bus.”'}
+  ];
+
+  const optionFirst = ['She dont like apples.', 'since', 'Mean', 'He go to school every day.', 'Noun'];
+  const optionSecond = ['She doesnt likes apples.', 'for', 'Kind', 'He goes to school every day.', 'Verb'];
+  const optionThird = ['She doesnt like apples.', 'during', 'selfish', 'He going to school every day.', 'Adjective'];
+  const optionFourth = ['She not like apples.', 'From', 'Greedy', 'He gone to school every day.', 'Adverb'];
+
+
+
+     let currentIndex = 0; // Start at first question
+
+function showQuestion(index) {
+  questionFunc.textContent = questions[index].question;
+  options1.textContent = optionFirst[index];
+  options2.textContent = optionSecond[index];
+  options3.textContent = optionThird[index];
+  options4.textContent = optionFourth[index];
+}
+
+// Initially show the first question
+showQuestion(currentIndex);
+
+function previous() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    showQuestion(currentIndex);
+  }
+}
+
+function next() {
+  if (currentIndex < questions.length - 1) {
+    currentIndex++;
+    showQuestion(currentIndex);
+  }
+}
+    </script>
+</body>
+</html>
