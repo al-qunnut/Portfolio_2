@@ -1,7 +1,7 @@
 import '../Styles/homepage_styles.css';
 import Navigation from './Navigation.js';
 import Footer from './Footer.js';
-import { designs, Projects } from '../script';
+import { designs, Projects } from '../script.js';
 import anime from '../Images/anime.png';
 import MyImage from '../Images/MyImage.png';
 import logo from '../Images/Al-Qunnut.png'; // You forgot to import this here
