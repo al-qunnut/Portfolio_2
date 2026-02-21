@@ -23,16 +23,23 @@ const ProjectList = () => {
         <p>${project.text}</p>
       </dd>
       <button>
-        <a href='${project.href}'>View</a>
+        <a href='${project.href}' target='_blank'>View</a>
       </button>
     </div>`
   )).join('');
 };
 
 function loadHomePage() {
-  // Inject the full HTML
-  document.querySelector('#homepage').innerHTML = `
-    <div class='home'>
+  const homepageElement = document.querySelector('#homepage');
+  
+  if (!homepageElement) {
+    console.error('Homepage element not found');
+    return;
+  }
+
+ 
+  homepageElement.innerHTML = `
+    <div class='home' id='home'>
       
       <!-- Navigation -->
       <div id='nav'>
@@ -52,7 +59,7 @@ function loadHomePage() {
       </div>
 
       <!-- About Section -->
-      <div class='About'>
+      <div class='About' id='about'>
         <div class='About_image'>
           <img src='${MyImage}' alt='my image' class='About_img'/>
         </div>
@@ -65,7 +72,7 @@ function loadHomePage() {
       </div>
 
       <!-- Projects Section -->
-      <div class='Projects'>
+      <div class='Projects' id='projects'>
         <h2>Personal Web Projects</h2>
         <div class='projectCards'>
           ${ProjectList()} 
@@ -98,11 +105,36 @@ function loadHomePage() {
       </div>
       
 
-      <div>
+      <div id='contact'>
          ${Footer()}
       </div>
     </div>
   `;
+
+  // Smooth scroll functionality
+  const setupSmoothScroll = () => {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Close mobile menu after clicking
+          const navMenu = document.getElementById('nav-menu');
+          if (navMenu && !navMenu.classList.contains('hidden')) {
+            navMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+  };
 
   // Attach mobile menu toggle
   const toggleBtn = document.getElementById('menu-toggle');
@@ -110,6 +142,26 @@ function loadHomePage() {
   toggleBtn?.addEventListener('click', () => {
     navMenu.classList.toggle('hidden');
   });
+
+  // Contact button scroll to footer
+  const contactBtn = document.getElementById('contact-btn');
+  contactBtn?.addEventListener('click', () => {
+    document.getElementById('contact')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    navMenu?.classList.add('hidden');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navMenu?.contains(e.target) && !toggleBtn?.contains(e.target)) {
+      navMenu?.classList.add('hidden');
+    }
+  });
+
+  // Initialize smooth scroll
+  setupSmoothScroll();
 
   // Typed.js Animation
   var typed = new Typed('.auto-type', {

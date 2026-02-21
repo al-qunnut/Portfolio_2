@@ -25,7 +25,7 @@ export const contactIcons = () => {
   <a href="tel:+2347065667063">
    <i class="fa-solid fa-phone"></i>
   </a>
-  <a href='www.linkedin.com/in/al-qunnut-oshodilawal' target="_blank" rel="noopener">
+  <a href='https://www.linkedin.com/in/al-qunnut-oshodilawal/' target="_blank" rel="noopener">
    <i class="fa-brands fa-linkedin"></i>
   </a>
   <a href='https://github.com/al-qunnut' target="_blank" rel="noopener">
@@ -41,23 +41,23 @@ export const contactIcons = () => {
 export const navLists = [
   {
     id: 1,
-    href: "#",
+    href: "#home",
     name: 'Home'
   },
   {
     id: 2,
-    href: "../src/Pages/Projects.js",
+    href: "#projects",
     name: 'Projects'
   },
   {
     id: 3,
-    href: "#",
+    href: "#about",
     name: 'About'
   },
   {
     id: 4,
-    href: "#",
-    name: 'Blog'
+    href: "#contact",
+    name: 'Contact'
   }
 ]
 
@@ -76,6 +76,22 @@ export const designs = [
   },
   {
     id: 4,
+    href: SignUp,
+  },
+   {
+    id: 5,
+    href: Dashboard2,
+  },
+  {
+    id: 6,
+    href: Dashboard,
+  },
+  {
+    id: 7,
+    href: Dashboard3,
+  },
+  {
+    id: 8,
     href: SignUp,
   }
   ]

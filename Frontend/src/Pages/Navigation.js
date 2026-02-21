@@ -8,17 +8,19 @@ function Navigation() {
     <nav>
       <div class='mobile'>
         <div class="logo">
-          <img src="${logo}" alt="Logo" />
+          <a href="#home">
+            <img src="${logo}" alt="Logo" />
+          </a>
         </div>
         <div class="mobile-nav">
-          <button id="menu-toggle">☰</button>
+          <button id="menu-toggle" aria-label="Toggle menu">☰</button>
         </div>
       </div>
       <ul id="nav-menu" class="hidden">
         ${navListMenu()} 
-        <div>
-          <button class='contactbtn'>Contact Me</button>
-        </div>
+        <li>
+          <button class='contactbtn' id='contact-btn'>Contact Me</button>
+        </li>
       </ul>
     </nav>
   `;
